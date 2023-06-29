@@ -56,7 +56,6 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* row-gap: 10px; */
 }
 
 .grant-location-container {
@@ -227,4 +226,20 @@ h1 {
   scale: 1;
   opacity: 1;
   display: flex;
+}
+
+.error-container {
+  display: none;
+}
+
+.error-container.active {
+  display: flex;
+}
+
+.error-container img {
+  width: 200px;
+}
+
+.error-container p {
+  margin-top: 10px;
 }

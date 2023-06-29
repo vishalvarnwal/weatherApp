@@ -8,6 +8,7 @@ const grantAccessButton = document.querySelector("[data-grantAccess]");
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
+const errorContainer = document.querySelector(".error-container");
 
 //initially variable need?
 let currentTab = userTab;
@@ -61,6 +62,7 @@ function getfromSessionStorage() {
 async function fetchUserWeatherInfo(coordinates) {
   const { lat, lon } = coordinates;
   grantAccessContainer.classList.remove("active");
+  errorContainer.classList.remove("active");
   loadingScreen.classList.add("active");
   // API CALL
   try {
@@ -73,6 +75,7 @@ async function fetchUserWeatherInfo(coordinates) {
     renderWeatherInfo(data);
   } catch (error) {
     loadingScreen.classList.remove("active");
+    errorContainer.classList.add("active");
   }
 }
 
@@ -132,6 +135,7 @@ searchForm.addEventListener("submit", (e) => {
 
 const fetchSearchWeatherInfo = async (city) => {
   loadingScreen.classList.add("active");
+  errorContainer.classList.remove("active");
   userInfoContainer.classList.remove("active");
   grantAccessContainer.classList.remove("active");
   try {
@@ -147,5 +151,6 @@ const fetchSearchWeatherInfo = async (city) => {
     userInfoContainer.classList.add("active");
   } catch (error) {
     loadingScreen.classList.remove("active");
+    errorContainer.classList.add("active");
   }
 };
